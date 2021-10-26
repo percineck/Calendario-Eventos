@@ -1,0 +1,664 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+    <link rel="stylesheet" href="./css/Custom.css">
+    <style>
+        .year {
+            font-size: 25px;
+            border: none;
+            clear: none;
+            margin: auto;
+            margin-left: 5px;
+            margin-right: 5px;
+            width: 60px;
+            text-align: center;
+        }
+        
+        .mounth {
+            margin-top: 0px;
+            color: #cccc;
+            border: 1px solid #cccc;
+            border-radius: 10%;
+            font-size: 20px;
+            font-family: Panton-ExtraBold;
+            clear: none;
+            float: left;
+            width: 90px;
+            height: 90px;
+            line-height: 45px;
+            vertical-align: middle;
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+        
+        .mounths {
+            min-width: 1200px;
+            display: block;
+        }
+        
+        .mounth:hover {
+            color: #01913a;
+            border: 1px solid #01913a;
+        }
+        
+        .mounth_active {
+            color: green;
+            background-color: #eee;
+            border: 1px solid #01913a;
+        }
+        
+        .border_day {
+            float: left;
+            border-radius: 10px;
+            width: 130px;
+            height: 100px;
+            font-family: Panton-Bold;
+            font-size: 50px;
+            color: #cccc;
+            clear: none;
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+        
+        .day {
+            color: #cccc;
+            border: 1px solid #cccc;
+            border-radius: 10%;
+            font-size: 50px;
+            font-family: Panton-ExtraBold;
+        }
+        
+        .week {
+            font-size: 14px;
+            margin-top: -30px;
+        }
+        
+        .days {
+            height: 110px;
+            width: 724px;
+        }
+        
+        .day_active {
+            border: 1px solid #01913a;
+            color: green;
+            background-color: #eee;
+        }
+        
+        .day:hover {
+            color: #01913a;
+            border: 1px solid #01913a;
+        }
+        
+        .border_day:hover {
+            color: #01913a;
+        }
+        
+        .btnAgendaDia {
+            width: 50px;
+            height: auto;
+            color: #333333;
+            background-color: white;
+            box-shadow: none;
+        }
+        
+        .btnAgendaDia:hover {
+            color: #01913a;
+            box-shadow: none;
+        }
+        
+        .btnAgendaMes {
+            width: 50px;
+            height: 90px;
+            color: #333333;
+            background-color: white;
+            box-shadow: none;
+            text-align: center;
+        }
+        
+        .btnAgendaMes:hover {
+            color: #01913a;
+            box-shadow: none;
+        }
+        
+        .btnBusca {
+            border: none;
+            background-color: none;
+            box-shadow: none;
+            color: #333333;
+            ;
+            margin: auto;
+        }
+        
+        .btnBusca:hover {
+            box-shadow: none;
+            color: #01913a;
+        }
+        
+        .btnBusca:active {
+            box-shadow: none;
+            background-color: red;
+        }
+        /* @media screen and (max-width: 480px) {
+			.container {
+				max-width: 500px;
+				
+			} */
+        
+        .btnNoticias {
+            border-radius: 10px;
+            max-width: 300px;
+            box-shadow: none;
+            height: 100%;
+            text-align: center;
+            margin: 60px;
+            font-size: 25px;
+            border: 1px solid #333333;
+            font-family: Panton-ExtraBold;
+        }
+        
+        .btnNoticias:hover {
+            font-family: Panton-ExtraBold;
+            margin: 60px;
+            max-width: 300px;
+            height: 100%;
+            border: 1px solid #01913a;
+            color: #01913a;
+            box-shadow: 0 1px 1px 0.1px #999999;
+        }
+        
+        .text_block h3,
+        h4 {
+            margin: 0;
+            text-transform: lowercase;
+            margin-top: 5px;
+        }
+        
+        .tooCard {
+            text-align: center !important;
+            border-radius: 10px;
+            margin: auto;
+            padding-top: 5px;
+            margin-bottom: 30px;
+            box-shadow: 0 1px 10px 0.1px #999999;
+            max-width: 100%;
+            max-height: 100%;
+            width: 410px;
+            height: 220px;
+        }
+        
+        .tooCard:hover {
+            box-shadow: 0 4px 12px 0.75px #666666;
+            cursor: pointer;
+            transition: 0.5s;
+        }
+        
+        .tooCardTxt {
+            text-align: center !important;
+            border-radius: 10px;
+            margin: auto;
+            padding: auto;
+            margin-bottom: 30px;
+            max-width: 100%;
+            max-height: 100%;
+            width: 410px;
+            height: 220px;
+        }
+        
+        .page-link {
+            z-index: 2;
+            color: #333333;
+            background-color: white;
+            border-color: #333333;
+            margin-right: 8px;
+            border-radius: 10%;
+            font-size: 2em;
+            font-family: Panton-ExtraBold;
+            vertical-align: middle;
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+        
+        .page-link:hover {
+            z-index: 2;
+            color: white;
+            background-color: #01913a;
+            border: 1px solid #333333;
+            transition: 0.5s;
+        }
+    </style>
+
+    <title>Calendário</title>
+
+</head>
+
+<body>
+    <!-- input pesquisar -->
+    <div class="bloco-full align-middle">
+        <form class="row row-cols-lg-auto justify-content-center">
+            <div class="input-group-text" style="width: 550px; margin-top: 50px;">
+                <div class="input-group">
+                    <input type="text" class="form-control input-form" placeholder="O que você busca?">
+                </div>
+                <button class="btn-social btn-social-op" style="margin-left: 10px;">
+					<i class="fa fa-search"></i>
+				</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Anos -->
+    <div class="row justify-content-center line_year" style="text-align: center; margin-top: 30px; border-radius: 10px;">
+        <button type="button" class="btnAgendaDia year_left"><i class="fas fa-chevron-left"></i></button>
+        <div class="float-left" style="clear: none; width: 95px;">
+            <div class="year" style="border-radius: 10%;"></div>
+        </div>
+        <button type="button" class="btnAgendaDia year_right"><i class="fas fa-chevron-right"></i></button>
+    </div>
+    </div>
+
+    <!-- Meses -->
+    <div class="container" style="margin-top: 30px;">
+        <div class="row justify-content-center " style="text-align: center;">
+            <button type="button" class="btnAgendaMes left_mounth float-left"><i
+					class="fas fa-chevron-left"></i></button>
+            <div class="col w-75" style=" overflow-x: hidden;">
+                <div class="mounths  float-left justify-content-center w-auto  " style="padding: 0; margin: 0;">
+                    <div class="float-left ">
+                        <div class=" float-left p-4 mounth">JAN</div>
+                    </div>
+                    <div class="float-left">
+                        <div class="p-4 mounth">FEV</div>
+                    </div>
+                    <div class="float-left">
+                        <div class="p-4 mounth">MAR</div>
+                    </div>
+                    <div class="float-left">
+                        <div class="p-4 mounth">ABR</div>
+                    </div>
+                    <div class="float-left">
+                        <div class="p-4 mounth">MAI</div>
+                    </div>
+                    <div class="float-left">
+                        <div class="p-4 mounth">JUN</div>
+                    </div>
+                    <div class="float-left">
+                        <div class="p-4 mounth">JUL</div>
+                    </div>
+                    <div class="float-left">
+                        <div class="p-4 mounth">AGO</div>
+                    </div>
+                    <div class="float-left">
+                        <div class="p-4 mounth">SET</div>
+                    </div>
+                    <div class="float-left">
+                        <div class="p-4 mounth mounth_active">OUT</div>
+                    </div>
+                    <div class="float-left">
+                        <div class="p-4 mounth ">NOV</div>
+                    </div>
+                    <div class="float-left">
+                        <div class="p-4 mounth">DEZ</div>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btnAgendaMes right_mounth float-left"><i
+					class="fas fa-chevron-right"></i></button>
+        </div>
+
+        <!-- Dias -->
+        <div class="row row-cols-lg-auto justify-content-center " style="text-align: center; margin-top: 30px; max-width: 100%;">
+            <button type="button" class="btnAgendaDia left_day"><i class="fas fa-chevron-left"></i></button>
+            <div class="col" style=" overflow-x: hidden; width:724px;">
+                <div class="days   " style="padding: 0; margin: 0;">
+                    <div class="float-left border_day">
+                        <div class="p-3 day"></div>
+                        <div class="week"></div>
+                    </div>
+                    <div class="float-left border_day">
+                        <div class="p-3 day"></div>
+                        <div class="week"></div>
+                    </div>
+                    <div class="float-left border_day">
+                        <div class="p-3 day day_active"></div>
+                        <div class="week"></div>
+                    </div>
+                    <div class="float-left border_day">
+                        <div class="p-3 day"></div>
+                        <div class="week"></div>
+                    </div>
+                    <div class="float-left border_day">
+                        <div class="p-3 day"></div>
+                        <div class="week"></div>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btnAgendaDia right_day"><i class="fas fa-chevron-right"></i>
+			</button>
+        </div>
+
+        <div class="row justify-content-center">
+            <button type="#" class="btnNoticias">TODAS AS NOTÍCIAS</button>
+        </div>
+
+    </div>
+
+    <hr style="margin-bottom: 40px;">
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="tooCard" style="text-align: center;">
+                    <div class="tooCardTxt">
+                        <h4>05/10/2021 a 08/10/2021</h4>
+                        <h6>Dias da semana</h6>
+                        <h6>Horário de Publicação</h6>
+                        <hr style="margin-top: 20px;margin-bottom: 20px;">
+                        <h5 style="text-align: center;">Categoria da Agenda</h5>
+                        <h2>Título com ate 2 linhas.</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="tooCard">
+                    <div class="tooCardTxt" style="text-align: center;">
+                        <h4>05/10/2021 a 08/10/2021</h4>
+                        <h6>Dias da semana</h6>
+                        <h6>Horário de Publicação</h6>
+                        <hr style="margin-top: 20px;margin-bottom: 20px;">
+                        <h5 style="text-align: center;">Categoria da Agenda</h5>
+                        <h2>Título com ate 2 linhas.</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="tooCard">
+                    <div class="tooCardTxt" style="text-align: center;">
+                        <h4>05/10/2021 a 08/10/2021</h4>
+                        <h6>Dias da semana</h6>
+                        <h6>Horário de Publicação</h6>
+                        <hr style="margin-top: 20px;margin-bottom: 20px;">
+                        <h5 style="text-align: center;">Categoria da Agenda</h5>
+                        <h2>Título com ate 2 linhas.</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col">
+                <div class="tooCard">
+                    <div class="tooCardTxt" style="text-align: center;">
+                        <h4>05/10/2021 a 08/10/2021</h4>
+                        <h6>Dias da semana</h6>
+                        <h6>Horário de Publicação</h6>
+                        <hr style="margin-top: 20px;margin-bottom: 20px;">
+                        <h5 style="text-align: center;">Categoria da Agenda</h5>
+                        <h2>Título com ate 2 linhas.</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="tooCard">
+                    <div class="tooCardTxt" style="text-align: center;">
+                        <h4>05/10/2021 a 08/10/2021</h4>
+                        <h6>Dias da semana</h6>
+                        <h6>Horário de Publicação</h6>
+                        <hr style="margin-top: 20px;margin-bottom: 20px;">
+                        <h5 style="text-align: center;">Categoria da Agenda</h5>
+                        <h2>Título com ate 2 linhas.</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="tooCard">
+                    <div class="tooCardTxt" style="text-align: center;">
+                        <h4>05/10/2021 a 08/10/2021</h4>
+                        <h6>Dias da semana</h6>
+                        <h6>Horário de Publicação</h6>
+                        <hr style="margin-top: 20px;margin-bottom: 20px;">
+                        <h5 style="text-align: center;">Categoria da Agenda</h5>
+                        <h2>Título com ate 2 linhas.</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col">
+                <div class="tooCard">
+                    <div class="tooCardTxt" style="text-align: center;">
+                        <h4>05/10/2021 a 08/10/2021</h4>
+                        <h6>Dias da semana</h6>
+                        <h6>Horário de Publicação</h6>
+                        <hr style="margin-top: 20px;margin-bottom: 20px;">
+                        <h5 style="text-align: center;">Categoria da Agenda</h5>
+                        <h2>Título com ate 2 linhas.</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="tooCard">
+                    <div class="tooCardTxt" style="text-align: center;">
+                        <h4>05/10/2021 a 08/10/2021</h4>
+                        <h6>Dias da semana</h6>
+                        <h6>Horário de Publicação</h6>
+                        <hr style="margin-top: 20px;margin-bottom: 20px;">
+                        <h5 style="text-align: center;">Categoria da Agenda</h5>
+                        <h2>Título com ate 2 linhas.</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="tooCard">
+                    <div class="tooCardTxt" style="text-align: center;">
+                        <h4>05/10/2021 a 08/10/2021</h4>
+                        <h6>Dias da semana</h6>
+                        <h6>Horário de Publicação</h6>
+                        <hr style="margin-top: 20px;margin-bottom: 20px;">
+                        <h5 style="text-align: center;">Categoria da Agenda</h5>
+                        <h2>Título com ate 2 linhas.</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr style="margin-top: 20px;margin-bottom: 20px;">
+    <nav>
+        <ul class="pagination justify-content-center pagination pagination-lg">
+            <li class="page-item">
+                <a class="page-link" href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                    <span class="sr-only">Previous</span>
+                </a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous">
+    </script>
+    <script>
+        $(document).ready(function() {
+            var day_mili = 1 * 24 * 60 * 60 * 1000;
+            dayWeek = ["DOM", "SEG", "TER", "QUA", "QUI", "SEX", "SAB"];
+
+            function dayWeekGenerator(date_, index) {
+                $(".week").eq(index).html(dayWeek[date_.getDay()]);
+                $(".days").parent().scrollLeft(17 + 130 * 2);
+            }
+            $(".year").html((new Date).getFullYear());
+            $(".year_left").on("click", function() {
+                $(".year").html(parseInt($(".year").html()) - 1);
+                moveMounth();
+            });
+            $(".year_right").on("click", function() {
+                $(".year").html(parseInt($(".year").html()) + 1);
+                moveMounth();
+            });
+            $(".mounth").on("click", function() {
+                $(".mounth_active").removeClass("mounth_active");
+                $(this).addClass("mounth_active");
+                moveMounth();
+            });
+
+            $(".day").on("click", function() {
+                $(".day_active").removeClass("day_active");
+                $(this).addClass("day_active");
+                moveMounth();
+            });
+
+            function moveMounth() {
+                year = $(".year").html();
+                var mounth_active = $(".mounths").find(".mounth").index($(".mounth_active"));
+                var mounthLastDay = new Date(year, mounth_active + 1, 0);
+                var day_active = $(".day_active").html();
+
+                if (parseInt(day_active) > mounthLastDay.getDate()) {
+                    day_active = String(mounthLastDay.getDate()).padStart(2, '0');
+                    if (day_active < 10)
+                        day_active = "0" + mounth_active;
+                    var current_date_str = year + "-" + mounth_active + "-" + day_active;
+                    var current_date = new Date(current_date_str);
+                    var startDate = new Date();
+                    startDate.setTime(current_date.getTime() - 2 * day_mili);
+                    var generator_date = new Date();
+                    day_list.each(
+                        function(index) {
+                            generator_date.setTime(startDate.getTime() + index * day_mili);
+                            $(this).html(String(generator_date.getDate()).padStart(2, '0'));
+                            dayWeekGenerator(generator_date, index);
+                        }
+                    );
+                }
+                $(".mounths").parent().scrollLeft(10 + 100 * mounth_active)
+            }
+            $(".left_mounth").on("click", function() {
+                var mounth_list = $(this).parent().find(".mounths").find(".mounth");
+                var position_mounth = -1;
+                mounth_list.each(
+                    function(index) {
+                        if ($(this).hasClass("mounth_active")) {
+                            position_mounth = index;
+                            $(this).removeClass("mounth_active")
+                        }
+                    }
+                );
+
+                if (position_mounth < 0)
+                    position_mounth = mounth_list.length;
+                mounth_list.eq(position_mounth - 1).addClass("mounth_active");
+                moveMounth();
+            });
+
+            $(".right_mounth").on("click", function() {
+                var position_mounth = -1;
+                var mounth_list = $(this).parent().find(".mounths").find(".mounth");
+                mounth_list.each(
+                    function(index) {
+                        if ($(this).hasClass("mounth_active")) {
+                            position_mounth = index;
+                            $(this).removeClass("mounth_active")
+                        }
+                    }
+                );
+                if (position_mounth >= mounth_list.length - 1)
+                    position_mounth = -1
+                mounth_list.eq(position_mounth + 1).addClass("mounth_active");
+                moveMounth();
+            });
+
+
+            //#############################dias#########################################################################
+            var day_list = $(".days").find(".day");
+            day_list.each(
+                function(index) {
+                    var current_date = new Date();
+                    current_date.setDate(current_date.getDate() - 2 + index);
+                    $(this).html(String(current_date.getDate()).padStart(2, '0'));
+                    dayWeekGenerator(current_date, index);
+                }
+            );
+            $(".left_day").on("click", function() {
+
+                day_active = $(".day_active").html()
+
+                mounth_active = $(".mounths").find(".mounth").index($(".mounth_active")) + 1;
+                if (mounth_active < 10)
+                    mounth_active = "0" + mounth_active;
+                year = $(".year").html();
+
+                if (day_active == "01") {
+                    $(".left_mounth").click();
+                }
+                var current_date_str = year + "-" + mounth_active + "-" + day_active;
+                var current_date = new Date(current_date_str);
+                var startDate = new Date();
+                startDate.setTime(current_date.getTime() - 2 * day_mili);
+                var generator_date = new Date();
+                day_list.each(
+                    function(index) {
+                        generator_date.setTime(startDate.getTime() + index * day_mili);
+                        $(this).html(String(generator_date.getDate()).padStart(2, '0'));
+                        dayWeekGenerator(generator_date, index);
+                    }
+                );
+            });
+
+            $(".right_day").on("click", function() {
+                day_mili = 1 * 24 * 60 * 60 * 1000;
+                day_active = $(".day_active").html()
+                year = $(".year").html();
+                mounth_active = $(".mounths").find(".mounth").index($(".mounth_active")) + 1;
+                var mounthLastDay = new Date(year, mounth_active, 0);
+                if (mounth_active < 10)
+                    mounth_active = "0" + mounth_active;
+                if (day_active == String(mounthLastDay.getDate()).padStart(2, '0')) {
+                    $(".right_mounth").click();
+                }
+                var current_date_str = year + "-" + mounth_active + "-" + day_active;
+                var current_date = new Date(current_date_str);
+                var startDate = new Date();
+                startDate.setTime(current_date.getTime());
+                var generator_date = new Date();
+                day_list.each(
+                    function(index) {
+                        generator_date.setTime(startDate.getTime() + index * day_mili);
+                        $(this).html(String(generator_date.getDate()).padStart(2, '0'));
+                        dayWeekGenerator(generator_date, index);
+                    }
+                );
+            });
+        });
+    </script>
+
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.min.js" integrity="sha384-PsUw7Xwds7x08Ew3exXhqzbhuEYmA2xnwc8BuD6SEr+UmEHlX8/MCltYEodzWA4u" crossorigin="anonymous"></script>
+    -->
+</body>
+
+</html>
